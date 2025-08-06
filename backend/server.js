@@ -36,7 +36,7 @@ try {
 
 app.use(
   cors({
-    origin: "https://mchat-9b60.onrender.com", // Allow all origins
+    origin: process.env.FRONTEND_URL, // Allow all origins
     methods: ["GET", "POST","PUT","DELETE"], // Allow specific HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
   })
