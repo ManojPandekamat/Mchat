@@ -28,7 +28,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 try {
-  mongoose.connect("mongodb://localhost:27017/Mchat");
+  mongoose.connect(process.env.MONGO_URI);
   console.log("Connected to DB...");
 } catch (e) {
   console.error(e);
