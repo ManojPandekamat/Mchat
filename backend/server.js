@@ -16,6 +16,14 @@ const io = new Server(server, {
   cors: { origin: "*" },
 });
 
+
+const uploadsDir = path.join(process.cwd(), 'uploads');
+
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+  console.log('uploads/ directory created');
+}
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
