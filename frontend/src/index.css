@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+body {
+
+/* background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); */
+background-color: #fff9f0;
+  background-size: 400% 400%;
+  /* animation: gradientMove 10s ease infinite; */
+  height: 100vh;
+  width: 100vw;
+}
+
+
+/* Keyframes to move the gradient */
+/* @keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */ 
+
+

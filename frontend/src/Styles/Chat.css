@@ -1,0 +1,247 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Ensure body takes up full screen height */
+}
+
+.send-msg > button{
+    border: none;
+    padding: 1rem;
+    width: 5rem;
+    border-radius: 10px;
+    background-color: #fff9f0;
+    /* color: rgb(13, 13, 13); */
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+ img{
+    width: 40px;
+}
+
+textarea{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 70%;
+    border-radius: 10px;
+    min-height: 3rem;
+    max-height: 10rem;
+    overflow-y: auto;
+    resize: none;
+    box-sizing: border-box;
+    line-height: 1.4;
+    border: 1px solid gray;
+    outline: none;
+    white-space: pre-wrap;
+    word-break: break-word;
+    background-color: #fff0db;
+    color: #4a4a4a;
+}
+
+.send-msg {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    position: fixed;
+    left: 50%; 
+    transform: translateX(-50%); /* Adjust to truly center the element horizontally */
+    
+    bottom: 1rem;             /* Space from the bottom of the screen */
+    width: 50%;               /* Adjust the width as necessary */
+    padding: 0.5rem;
+    background-color: #fff9f0;
+    border: 1px solid rgba(154, 154, 154, 0.5);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.messages{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+/* background: radial-gradient(circle at top left, #ffe3d3, #ffb199, #ff9e7c); */
+    background-image: url('/public/background.png');
+    padding: 1.2rem;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    flex-grow: 1; /* Allow messages to take up the remaining space */
+    height: calc(100vh - 10rem); 
+    border-radius: 10px;/* Adjust the height dynamically based on screen size, considering the send-msg height */
+}
+
+.messages::-webkit-scrollbar {
+    width: 6px;
+    background-color: rgb(135, 135, 135,0.3);
+}
+
+.body{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-color: #fff9f0;
+}
+
+.room-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: start;
+    justify-content: start;
+    padding: 10px;
+}
+
+nav{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+  font-size: 1rem;
+  color: #4a4a4a; /* soft dark gray for good readability */
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+p span {
+  color: #fff9f0; /* vibrant accent matching your button/input border */
+  font-weight: 600;
+  background-color: #4a4a4a;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+  border-radius: 5px; 
+}
+
+
+#label-for-file{
+    background: #fff9f0;
+    color: white;
+    width: fit-content;
+    padding: 5px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    /* border:2px solid rgb(0, 0, 0); */
+    
+    }
+
+input{
+    box-shadow: 0px 0px 5px rgba(255, 158, 124, 0.8);
+
+}
+
+dialog{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 40%;
+    max-width: 15rem;
+    border-radius: 10px;
+
+}
+dialog>input{
+    width: 80%;
+}
+.sublink{
+    padding: 0.2rem 0.5rem;
+    border: none;
+    background-color: #ff9e7c;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    box-shadow: 3px 4px 0px rgba(0, 0, 0, 0.8);
+
+    background: linear-gradient(135deg, #ff9e7c 50%, #4a4a4a 50%);
+    background-size: 400% 400%;
+    background-position: bottom left;
+    transition: background-position 0.6s ease-in-out, color 0.3s ease;
+
+}
+
+.sublink:hover{
+     color: #fff;
+     background-position: top right;
+    
+}
+
+
+
+@media (max-width: 700px) {
+  .body {
+    /* padding: 1rem 0.5rem;
+     */
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+  }
+
+  .messages{
+    width: 100%;
+}
+
+.room-details{
+    display: flex;
+    flex-direction: row;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.send-msg{
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      z-index: 10;
+      margin-left: 2%;
+      margin-right: 2%;
+
+
+  }
+
+  .chat-card {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  dialog{
+    width: 80%;
+    border-radius: 5px;
+}
+  input{
+   padding: 0.5rem;
+
+}
+.messages {
+  /* previously: height: calc(100vh - 10rem); */
+  height: calc(100vh - 4rem); /* 4rem ≈ height of send-msg on mobile */
+  overflow-y: auto;
+}
+
+
+
+}

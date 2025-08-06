@@ -1,0 +1,38 @@
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#alert {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #feffb2ff;
+  color: #654747ff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: 2px;
+  padding: 0.2rem 0.5rem;
+  animation: slideDown 0.7s ease-out forwards;
+}
+
+
+@media (max-width: 768px) {
+  #alert{
+    top: 20%;
+  left:40%;
+    transform : translateX(-50%);
+    padding:0.2rem 0.5rem 0.2rem 0.5rem;
+  }
+}
