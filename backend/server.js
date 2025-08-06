@@ -36,8 +36,8 @@ try {
 
 app.use(
   cors({
-    origin: "*", // Allow all origins
-    methods: ["GET", "POST"], // Allow specific HTTP methods
+    origin: "https://mchat-9b60.onrender.com", // Allow all origins
+    methods: ["GET", "POST","PUT","DELETE"], // Allow specific HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
   })
 );
