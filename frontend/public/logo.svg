@@ -1,0 +1,17 @@
+<svg width="150" height="150" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Main chat bubble shape (rounded rectangle) -->
+    <!-- Positioned from (15,15) with a width of 70 and height of 55, and rounded corners (rx=15) -->
+    <!-- Filled with a slightly richer, peachy-gold color to highlight the logo -->
+    <rect x="15" y="15" width="70" height="55" rx="15" fill="#FFDDAA"/>
+
+    <!-- Tail of the chat bubble -->
+    <!-- This path creates a triangle pointing downwards from the bottom-center of the main bubble -->
+    <!-- Also filled with the peachy-gold color -->
+    <path d="M 50 70 L 40 85 L 60 70 Z" fill="#FFDDAA"/>
+
+    <!-- The letter "M" inside the bubble -->
+    <!-- Centered horizontally (x="50") and vertically (y="42.5") within the main bubble -->
+    <!-- Filled with the deep warm brown text color for great contrast against the bubble -->
+    <text x="50" y="42.5" dominant-baseline="middle" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="45" font-weight="bold" fill="#3B2F0B">M</text>
+</svg>
