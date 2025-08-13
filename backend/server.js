@@ -118,7 +118,7 @@ async function deleteChat(roomId) {
         await fs.promises.unlink(path.join(__dirname, "uploads", f.filename));
       }
     }
-   let sockets = map.get(roomId);
+   let sockets = map.get(roomId) || [];
     map.delete(roomId);
     Array.from(sockets).forEach(async (s)=>{
       socketsToRoomMap.delete(s);
@@ -133,20 +133,26 @@ async function deleteChat(roomId) {
 
 function handleDisconnection(socketId) {
   const roomId = socketsToRoomMap.get(socketId);
+  if (!roomId) return; // socket not in any room
 
-  let sockets = map.get(roomId);
+  const sockets = map.get(roomId);
+  if (!sockets) return; // room doesn't exist in map
 
-  if (sockets) {
-    sockets.delete(socketId);
-    if (sockets.size === 0) {
-      deleteChat(roomId);
+  sockets.delete(socketId);
+  socketsToRoomMap.delete(socketId);
 
-      map.delete(roomId);
+  if (sockets.size === 0) {
+    // Last user gone — delete data and remove from map
+    deleteChat(roomId);
+    map.delete(roomId);
+  } else {
+    // Notify remaining members about updated count
+    for (const s of sockets) {
+      returnNumbersOfMembers(s);
     }
-    // map.set(roomId,sockets);
-    socketsToRoomMap.delete(socketId);
   }
 }
+
 
 function returnNumbersOfMembers(socketId) {
   let roomId = socketsToRoomMap.get(socketId);

@@ -24,8 +24,9 @@ function Chat() {
   const params = useParams();
   const socket = useRef();
   const [response, setResponse] = useState("");
-  const [canMessage, setCanMessage] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [state,setState]=useState("loading")
+  // const [canMessage, setCanMessage] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const fileUploadRef = useRef(null);
 
@@ -45,7 +46,7 @@ function Chat() {
   }, [user]);
 
   useEffect(() => {
-    setLoading(true);
+    setState("loading");
     setCode(params.roomId);
 
     dialogRef.current.showModal();
@@ -88,9 +89,9 @@ function Chat() {
 
     socket.current.on("handShake", (response) => {
       if (response.status) {
-        setCanMessage(true);
+        setState("ready");
       } else {
-        setCanMessage(false);
+        setState("error");
       }
     });
 
@@ -107,7 +108,7 @@ function Chat() {
       setUsers(response);
     });
 
-    setLoading(false);
+    // setLoading(false);
 
     return () => {
       socket.current.disconnect();
@@ -255,9 +256,9 @@ function Chat() {
         </ul>
       </dialog>
 
-      {loading ? (
+      {state==="loading" ? (
         <div>Loading....</div>
-      ) : canMessage ? (
+      ) : state==="ready" ? (
         <div>
           <div className="body">
             <nav>
