@@ -16,6 +16,15 @@ const io = new Server(server, {
   cors: { origin: "*" },
 });
 
+
+const uploadsDir = path.join(process.cwd(), 'uploads');
+
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+  console.log('uploads/ directory created');
+}
+
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
@@ -28,7 +37,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 try {
-  mongoose.connect("mongodb://localhost:27017/Mchat");
+  mongoose.connect(process.env.MONGO_URI);
   console.log("Connected to DB...");
 } catch (e) {
   console.error(e);
@@ -36,11 +45,12 @@ try {
 
 app.use(
   cors({
-    origin: "*", // Allow all origins
-    methods: ["GET", "POST"], // Allow specific HTTP methods
+    origin: process.env.FRONTEND_URL, // Allow all origins
+    methods: ["GET", "POST","PUT","DELETE"], // Allow specific HTTP methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
   })
 );
+
 
 
 // ===========================Hashmap managing Unique code details==========================
