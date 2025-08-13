@@ -24,7 +24,6 @@ if (!fs.existsSync(uploadsDir)) {
   console.log('uploads/ directory created');
 }
 
-
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
